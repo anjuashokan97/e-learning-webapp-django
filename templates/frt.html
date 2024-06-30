@@ -1,0 +1,758 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+         
+        
+
+        .navbar{
+          background: #393E46;
+          opacity:0.8;
+          height: 80px;
+          margin: 20px;
+          border-radius: 16px;
+          padding: 0.5rem;
+        }
+
+        .login-button{
+          {% comment %} background-color: rgb(134, 133, 133); {% endcomment %}
+          background-color: #ffffff;
+          color: black;
+          font-size: 15px;
+          padding: 8px 20px;
+          border-radius: 50px;
+          text-decoration: none;
+          transition: 0.3s background-color;
+        }
+
+        .login-button:hover{
+          background-color: rgba(148, 145, 145, 0.904);
+        }
+
+        .navbar-toggler{
+          border: none;
+          font-size: 1.25rem;
+        }
+
+        .navbar-toggler:hover, .btn-close:hover{
+          opacity: 0.8;
+        }
+
+        .navbar-toggler:focus, .btn-close:focus{
+          box-shadow: none;
+          outline: none;
+        }
+
+        .nav-link{
+          {% comment %} color: rgb(77, 75, 75); {% endcomment %}
+          color: white;
+          font-family:cookie;
+          font-size:20px;
+          font-weight: 600;
+          position: relative;
+        }
+
+        .nav-link:hover{
+          color:white;
+          opacity:0.8;
+        }
+        @media (min-width:991px)
+        {
+          .nav-link::before{
+          content: "";
+          position: absolute;
+          bottom: 0%;
+          transform: translateY(-10%);
+          width: 0;
+          height: 2px;
+          {% comment %} background-color: #009970; {% endcomment %}
+          background-color: #ffffff;
+          visibility: hidden;
+          transition: 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::before{
+          width: 100%;
+          visibility: visible;
+        }
+        }
+
+        {% comment %} @media (max-width:991px)
+        {
+          .sidebar{
+            background:rgb(255,255,255);
+            backdrop-filter:blur(10px)
+          }
+        }  {% endcomment %}
+
+        .hero-section{
+          /* background: url('img5.jpg') no-repeat center; 
+          background-size: cover;   */
+          background-image: url('{% static '/images/img5.jpg'%}');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-attachment: fixed; 
+          width: 100%;
+          height: 100vh;
+        }
+
+        .hero-section::before{
+          background-color: rgba(0, 0, 0, 0.3);
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+        
+        .hero-section, .container{
+          height: 100vh;
+          z-index: 1;
+          position: relative;
+        }
+        .hero-section h1{
+          font-size: 1.5rem;
+        }
+
+        .hero-section h2{
+          font-size: 1.2rem;
+        }
+
+        .row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .book{
+      display: inline-flex;
+      justify-content: space-evenly;
+      align-items: center;
+      }
+
+       /* review style */ 
+
+      .swiper-slide{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+     
+
+      .card{
+        position: relative;
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 20px 60px;
+        box-shadow: 0 0 10px #ccc;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .card .image{
+        width: 150px;
+        height: 150px;
+        padding: 3px;
+        border: 3px solid blueviolet;
+        background: #fff;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+
+      .card .image img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .card h3{
+        text-align: center;
+      }
+      .card p{
+        text-align: center;
+        color: tomato;
+      }
+      .swiper-container{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        /* margin-top: 45px; */
+        margin: 0 auto;
+        width: 70%;
+      }
+
+      .swiper{
+        margin: 0 auto;
+        cursor: grab;
+      }
+
+      .swiper-slide{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev{
+        width: 30px;
+        height: 30px;
+        margin: 0 auto; 
+        border-radius: 50%;
+        background: #b8b3b3;
+        box-shadow: 0 0 10px #cfcdcd;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after{
+        font-size: 15px;
+        font-weight: bold;
+        color: black;
+      }
+
+      /*.swiper-button-next:hover{
+        transform: scale(1.2) translateX(80%);
+      }
+
+      .swiper-button-prev:hover{
+        transform: scale(1.2) translateX(80%);
+      }
+
+      .swiper-button-next{
+        transform: translateX(100%)
+      }
+
+      .swiper-button-prev{
+        transform: translateX(100%)
+      } */
+
+      .swiper-pagination{
+        transform: translateY(500%);
+      }
+
+
+
+
+
+      /* Footer style */ 
+
+
+      .footer-distributed{
+        background-color: #2d2a30;
+        box-sizing: border-box;
+        widows: 100%;
+        text-align: center; 
+        font: bold 16px sans-serif;
+        padding: 50px 15px 50px 15px; 
+      }
+
+
+      .footer-distributed h3{
+        color: #fff;
+        font: normal 36px 'cookie', cursive;
+        margin: 0;
+      }
+      .footer-distributed h3 span{
+        color: #e0ac1c;
+        font: normal 36px 'cookie', cursive;
+      }
+
+      .footer-distributed .footer-links{
+        color: #fff;
+        margin: 20px 0 20px;
+      }
+
+      .footer-distributed .footer-links a{
+        display: inline-block;
+        line-height: 1.8;
+        text-decoration: none;
+        color: inherit;
+      }
+
+
+      
+      .footer-distributed .footer-center i{
+        background-color: #33383b;
+        color: #fff;
+        font-size: 15px;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin: 10px 12px; 
+        vertical-align: middle; 
+      }
+
+      .footer-distributed .footer-center i.fa-envelope{
+        font-size:17px;
+        line-height: 38px;
+      }
+
+      .footer-distributed .footer-center p{
+        color: #fff;
+        vertical-align: middle;
+        margin: 0;
+        font-family: cookie;
+        font-weight: normal;
+      }
+
+      .footer-distributed .footer-center p a{
+        
+        color: #e0ac1a;
+        text-decoration: none;
+        font-family: Georgia, serif;
+      } 
+
+
+      .footer-distributed .footer-icons a{
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background-color: #33383b;
+        border-radius: 2px;
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+        line-height: 35px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+
+      .footer-distributed .footer-icons a:hover{
+        background-color: #3f71ea;
+      }
+
+      .footer-distributed .footer-links a:hover{
+        color: #3f71ea;
+      }
+
+      .footer-left .txt{
+        color:#cccccc93;
+        font-weight: normal;
+      }
+
+      .header{
+        padding: 30px;
+        text-align: center;
+        background: #1abc9c;
+        color: #fff;
+        font-size: 25px;
+      }
+
+      .header-content{
+        position: absolute;
+        top: 30%;
+        left: 5%; 
+      }
+
+      
+      .header-content h1{
+        -webkit-text-stroke: 2px rgba(245, 245, 245, 0.637);
+        color: #607274;
+        font-size: 70px;
+        font-family: cookie;
+        text-transform: capitalize;
+        font-weight: 900;
+        width: 500px; 
+        margin-bottom: 15px;
+      }
+
+      .header-content h1:hover{
+        -webkit-text-stroke: 2px rgba(245, 245, 245, 0.637);
+        color: #0a7a5c;
+        
+      }
+
+      @media (max-width:991px)
+        {
+          .header-content h1{
+            font-size: 70px;
+            width:100%;
+          }
+      }
+
+
+      
+      .email-signup a{
+        border: 0;
+        outline: 0;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 18px;
+        padding: 10px 30px;
+        background: #1abc9cc2;
+      }
+
+
+      .navbar-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+      
+
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar start -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand me-auto fw-bold fs-4" href="#" style="font-family:cookie;color:#ffffff;">CodezDeveloper</a>
+      
+      <div class="sidebar bg-dark offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header text-light border-bottom">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">CodezDeveloper</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="#" onclick="closeNav()">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="#about" onclick="closeNav()">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="#review" onclick="closeNav()">Review</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="#" onclick="closeNav()">File</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="#contact" onclick="closeNav()">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a href="{% url 'sign' %}" class="login-button">Signup</a>
+      <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Navbar end -->
+    
+  <!-- New section -->
+  <section class="hero-section">
+    <!-- <div class="container d-flex text-align-center justify-content-center fs-15 text-dark flex-column p-0"> -->
+      <div class="container header-content">
+      <h1>Best Education Expertise</h1>
+      <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
+      <form class="email-signup">
+        <!-- <input type="email" name="email" id="mail" placeholder="Email address" required> -->
+        <a href="{% url 'file' %}" class="btn btn-secondary">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+      </form>
+    </div>
+    
+  </section>
+
+ 
+  
+  <!-- CARD -->
+
+  <h1 id="about"></h1>
+
+  <div class="container-fluid" style="margin-top: 100px;background-color: #f8f7facc;">
+    <div style="text-align: center;" class="header my-5">
+      <h1 style="font-family:'Times New Roman', Times, serif;">Why Choose E-learning</h1>
+    </div>
+  
+    <div class="container-fluid marketing">
+  
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center m-3" style="box-shadow: 1px 1px 1px 2px rgba(244, 238, 238, 0.967);width: 350px;height: auto">
+          <div class="book rounded-circle m-3" style="width:100px; height:100px;background: #cfd6ef;position: relative;"><i class="fa-solid fa-book" style="font-size: 35px;color: #192655;position: absolute;left: 35px;top:33px"></i></div>
+  
+          <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Books & Library</h4>
+          <p style="margin-bottom: 35px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+          
+        </div>
+  
+        <!-- Scholarship -->
+  
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center m-3" style="box-shadow: 1px 1px 1px 2px rgba(244, 238, 238, 0.967);width: 350px;height: auto">
+          <div class="book rounded-circle m-3" style="width:100px; height:100px;background: #c4d9ef;position: relative;"><i class="fa-solid fa-graduation-cap" style="font-size: 35px;color: #3081D0;position: absolute;left: 30px;top:33px"></i></div>
+  
+          <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Scholarship</h4>
+          <p style="margin-bottom: 35px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+          
+        </div>
+  
+        <!-- Course -->
+  
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center m-3" style="box-shadow: 1px 1px 1px 2px rgba(244, 238, 238, 0.967);width: 350px;height: auto">
+          <div class="book rounded-circle m-3" style="width:100px; height:100px;background: #f3d4c4;position: relative;"><i class="fa-solid fa-globe" style="font-size: 35px;color: #FF6C22;position: absolute;left: 34px;top:33px"></i></div>
+  
+          <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Learn Course Online</h4>
+          <p style="margin-bottom: 35px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+          
+        </div>
+  
+  
+        <!-- Instructor -->
+  
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center m-3" style="box-shadow: 1px 1px 1px 2px rgba(244, 238, 238, 0.967);width: 350px;height: auto">
+          <div class="book rounded-circle text-center m-3" style="width:100px; height:100px;background: #d2f4f0;position: relative;"><i class="fa-solid fa-user" style="font-size: 35px;color: #5C8984;position: absolute;left: 35px;top:33px"></i></div>
+      
+          <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Expert Instructors</h4>
+          <p style="margin-bottom: 35px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">And lastly this, the third column of representative placeholder content.</p>
+          
+        </div>
+  
+        <!-- Lab -->
+  
+  
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center m-3" style="box-shadow: 1px 1px 1px 2px rgba(244, 238, 238, 0.967);width: 350px;height: auto">
+           <div class="book rounded-circle m-3" style="width:100px; height:100px;background: #f0d0e1;position: relative;"><i class="fa-solid fa-computer" style="font-size: 35px;color: #662549;position: absolute;left: 33px;top:33px"></i></div>
+  
+          <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Lab Practice</h4>
+          <p style="margin-bottom: 35px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">And lastly this, the third column of representative placeholder content.</p>
+          
+        </div>
+  
+        <!-- Placement -->
+  
+  
+        <div class="col-xs-12 col-sm-6 col-md-4 text-center m-3" style="box-shadow: 1px 1px 1px 2px rgba(244, 238, 238, 0.967);width: 350px;height: auto">
+          <div class="book rounded-circle m-3" style="width:100px; height:100px;background: #f4cbd1;position: relative;"><i class="fa-solid fa-handshake" style="font-size: 35px;color: #EB455F;position: absolute;left: 30px;top:33px;"></i></div>
+  
+          <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Placements Support</h4>
+          <p style="margin-bottom: 35px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">And lastly this, the third column of representative placeholder content.</p>
+          
+        </div>
+      </div>
+  </div>
+  </div>
+
+
+  <!-- Student Review Swiper Card -->
+
+  <h1 id="review"></h1>
+
+  <div style="margin-top: 100px;padding-bottom: 130px;">
+
+  <div class="container-fluid">
+    <div style="text-align: center;" class="my-5 header">
+      <h1 style="font-family:'Times New Roman', Times, serif;">Reviews</h1>
+    </div>
+
+  <div class="swiper-container">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="card">
+            <div class="image">
+              <img src="{% static '/images/c1.jpg'%}" alt="card-img">
+            </div>
+            <h3>Name</h3>
+            <p>Product Knowlege</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="card">
+            <div class="image">
+              <img src="{% static '/images/c2.jpg'%}" alt="card-img">
+            </div>
+            <h3>Name</h3>
+            <p>Product Knowlege</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="card">
+            <div class="image">
+              <img src="{% static '/images/c3.jpg'%}" alt="card-img">
+            </div>
+            <h3>Name</h3>
+            <p>Product Knowlege</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="card">
+            <div class="image">
+              <img src="{% static '/images/c4.jpg'%}" alt="card-img">
+            </div>
+            <h3>Name</h3>
+            <p>Product Knowlege</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="card">
+            <div class="image">
+              <img src="{% static '/images/c5.jpg'%}" alt="card-img">
+            </div>
+            <h3>Name</h3>
+            <p>Product Knowlege</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="card">
+            <div class="image">
+              <img src="{% static '/images/c6.webp'%}" alt="card-img">
+            </div>
+            <h3>Name</h3>
+            <p>Product Knowlege</p>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div> 
+  </div> 
+  </div>
+
+
+  <!-- Footer -->
+  <h1  id="contact"></h1>
+
+  <div class="container-fluid" style="margin-top: 100px;">
+    <div class="row footer-distributed">
+        <div class="col-12 col-sm-6 col-md-3 footer-left">
+            <h3>Codez<span>Developer</span></h3>
+            <p class="footer-links">
+                <a href="#">Home</a>
+                |
+                <a href="#">About</a>
+                |
+                <a href="#">Reviews</a>
+                |
+                <a href="#">Contact</a>
+            </p>
+        
+            <p class="txt">Copyright © 2021 <strong>Codez Developer</strong> All rights reserved</p>
+            <div class="footer-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+  
+        
+        <div class="col-12 col-sm-6 col-md-3 mt-4 footer-center">
+            <div class="sym">
+                <i class="fa fa-map-marker"></i>
+                <p><span>Abcd </span>Kerala</p>
+            </div>
+            <div class="sym2">
+                <i class="fa fa-phone"></i>
+                <p>+91 12**5**248</p>
+            </div>
+            <div class="sym3">
+                <i class="fa fa-envelope"></i>
+                <p><a href="#">xyz@gmail.com</a></p>
+            </div>
+        </div>
+
+
+        <div class="col-12 col-md-6 footer-right mt-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15781.861977395614!2d76.90477379504598!3d8.551156613875891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05becc3ff21c97%3A0x75f34bd3265ce17e!2sSreekariyam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1702790969712!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+    </div>
+</div>
+
+
+    
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+
+      function closeOffcanvas()
+      {
+        var closeButton = document.querySelector('.btn-close');
+        if (closeButton)
+        {
+          closeButton.click()
+        }
+      }
+
+      function closeNav()
+      {
+        closeOffcanvas()
+      }
+
+
+
+
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        // slidesPerGroup: 3,
+        // loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          992: {
+            slidesPerView: 3,
+            spaceBetween:20,
+          }
+        },
+      });
+    </script>
+
+
+</body>
+</html>

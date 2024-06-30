@@ -1,0 +1,211 @@
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Signup Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #ccc;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        /* #1845ad,
+        #23a2f6 */
+        #077c2c,
+        #0fd850
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -60px;
+    bottom: -80px;
+}
+form{
+    height: 580px;
+    width: 450px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: cookie;
+    color: black;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form a{
+    float: right;
+    margin-top: 10px;
+}
+form a:hover{
+    color: #1f41b0;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 0px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    outline: 1px inset rgb(0, 128, 255);
+    height: 40px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    font-size:20px;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 300; 
+    color: black;
+}
+input:focus {
+  border: 1px solid black;
+}
+::placeholder{
+    color: rgb(70, 69, 69);
+    font-size: medium;
+} 
+.button{
+    margin: 20px 85px 0;
+    width: 12em;
+    height: 2.7em;
+    background-color: #ebeef1;
+    color: #080710;
+    padding: 12px 0;
+    font-size: 18px;
+    font-family: times new roman;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    overflow: hidden;
+    z-index: 1;
+    /* box-shadow: 2px 2px px 1px #ffffff; */
+    /* box-shadow: 10px 1px -1px #c5c5c5,-10px -10px -1px #ffffff; */
+}
+.button::before{
+    content: '';
+    width: 0;
+    height: 2.7em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right,#1fbc50 0%,#f09819 100%);
+    display: block;
+    transition: .5s ease;
+    z-index: -1;
+}
+.button:hover::before{
+    width: 12em;
+}
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+
+    </style>
+</head>
+<body>
+    {% for msg in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Hai! </strong>{{msg}}.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post">
+        {% csrf_token %}  
+        <h3>Signup Here</h3>
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" name="name" id="username">
+
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email or Phone" name="email" id="email">
+
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Password" id="pass1" name="pass1">
+
+
+        <label for="password2">Confrom Password</label>
+        <input type="password" placeholder="Confrom Password" id="pass2" name="pass2">
+        <button class="button" type="submit">Signup</button>
+        
+        <a href="{% url 'web' %}">i have already account</a>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>

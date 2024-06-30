@@ -1,0 +1,201 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+Booking
+{% endblock %}
+
+{% block content %}
+{% load course_tags %}
+<style>
+  .head center{
+    font-family:Garamond;
+    font-weight:900;
+    font-size:40px;
+  }
+  .card{
+    overflow: hidden;
+  }
+  .dis .count{
+      opacity: 0;
+      transition: all 0.5s;
+  }
+
+  .card:hover .dis .count{
+      opacity: 1;
+      transform: translateY(-20px)
+  }
+
+  .dis img{
+      transition: all 0.5s;
+  }
+
+  .card:hover .dis img{
+      transform: scale(1.1)
+  }
+
+  @media (max-width:992px)
+  {
+    .container-fluid .card-body{
+      text-align: left;
+      width:100%;
+    }
+  }
+</style>
+<h2 class="head"><center style="color:green; padding:115px 0 0px;">Featured Courses</center></h2>
+<hr>
+<div class="container-fluid text-center">
+  {% for i in course %}
+  <div class="card mx-3 my-3" style="width: 20rem; display:inline-block;">
+      <div class="position-relative dis">
+          <img src="{{i.image.url}}" class="card-img-top rounded mx-auto d-block w-75 pt-2" height="200" alt="...">
+          <span class="count position-absolute bottom-0 start-0 badge rounded-pill mb-0 ms-3 fw-bold" style="background:#071952;">
+              <span class="text-uppercase fw-bold font-size-xs py-1" style="font-family: Times New Roman;">Discount {{i.discount}} %</span>
+          </span>
+      </div>
+      <div class="card-body p-4">
+          <h4 class="card-title text-start" style="font-family: Georgia;">{{i.cou_name}}</h4>
+          {% if i.rate == 0 %}
+              <div class="d-lg-flex align-items-end flex-wrap mb-n1 pt-0">
+                  <div class="star-rating mb-2 mb-lg-0 me-lg-3">
+                      <span class="rating text-warning" style="width:50%;">
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                      </span>
+                  </div>
+          
+                  <div class="font-size-sm">
+                      <span class="text-secondary fw-bold" style="font-family: Garamond;">5.45 (5.8k+ reviews)</span>
+                  </div>
+              </div>
+          {% elif i.rate == 1 %}
+              <div class="d-lg-flex align-items-end flex-wrap mb-n1 pt-0">
+                  <div class="star-rating mb-2 mb-lg-0 me-lg-3">
+                      <span class="rating text-warning" style="width:50%;">
+                          <i class="fas fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                      </span>
+                  </div>
+          
+                  <div class="font-size-sm">
+                      <span class="text-secondary fw-bold" style="font-family: Garamond;">5.45 (5.8k+ reviews)</span>
+                  </div>
+              </div>
+          {% elif i.rate == 2 %}
+              <div class="d-lg-flex align-items-end flex-wrap mb-n1 pt-0">
+                  <div class="star-rating mb-2 mb-lg-0 me-lg-3">
+                      <span class="rating text-warning" style="width:50%;">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                      </span>
+                  </div>
+          
+                  <div class="font-size-sm">
+                      <span class="text-secondary fw-bold" style="font-family: Garamond;">5.45 (5.8k+ reviews)</span>
+                  </div>
+              </div>
+          {% elif i.rate == 3 %}
+              <div class="d-lg-flex align-items-end flex-wrap mb-n1 pt-0">
+                  <div class="star-rating mb-2 mb-lg-0 me-lg-3">
+                      <span class="rating text-warning" style="width:50%;">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                      </span>
+                  </div>
+          
+                  <div class="font-size-sm">
+                      <span class="text-secondary fw-bold" style="font-family: Garamond;">5.45 (5.8k+ reviews)</span>
+                  </div>
+              </div>
+          {% elif i.rate == 4 %}
+              <div class="d-lg-flex align-items-end flex-wrap mb-n1 pt-0">
+                  <div class="star-rating mb-2 mb-lg-0 me-lg-3">
+                      <span class="rating text-warning" style="width:50%;">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="far fa-star"></i>
+                      </span>
+                  </div>
+          
+                  <div class="font-size-sm">
+                      <span class="text-secondary fw-bold" style="font-family: Garamond;">5.45 (5.8k+ reviews)</span>
+                  </div>
+              </div>
+          {% elif i.rate == 5 %}
+              <div class="d-lg-flex align-items-end flex-wrap mb-n1 pt-0">
+                  <div class="star-rating mb-2 mb-lg-0 me-lg-3">
+                      <span class="rating text-warning" style="width:50%;">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                      </span>
+                  </div>
+          
+                  <div class="font-size-sm">
+                      <span class="text-secondary fw-bold" style="font-family: Garamond;">5.45 (5.8k+ reviews)</span>
+                  </div>
+              </div>
+          {% endif %}               
+
+          <div class="d-flex align-items-center">
+              <div class="me-2 d-flex icon-uxs text-secondary">
+                  
+                  <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14.3164 4.20996C13.985 4.37028 13.8464 4.76904 14.0067 5.10026C14.4447 6.00505 14.6667 6.98031 14.6667 8C14.6667 11.6759 11.6759 14.6667 8 14.6667C4.32406 14.6667 1.33333 11.6759 1.33333 8C1.33333 4.32406 4.32406 1.33333 8 1.33333C9.52328 1.33333 10.9543 1.83073 12.1387 2.77165C12.4259 3.00098 12.846 2.95296 13.0754 2.66471C13.3047 2.37663 13.2567 1.95703 12.9683 1.72803C11.5661 0.613607 9.8016 0 8 0C3.58903 0 0 3.58903 0 8C0 12.411 3.58903 16 8 16C12.411 16 16 12.411 16 8C16 6.77767 15.7331 5.60628 15.2067 4.51969C15.0467 4.18766 14.6466 4.04932 14.3164 4.20996Z" fill="currentColor"/>
+                      <path d="M7.99967 2.66663C7.63167 2.66663 7.33301 2.96529 7.33301 3.33329V7.99996C7.33301 8.36796 7.63167 8.66663 7.99967 8.66663H11.333C11.701 8.66663 11.9997 8.36796 11.9997 7.99996C11.9997 7.63196 11.701 7.33329 11.333 7.33329H8.66634V3.33329C8.66634 2.96529 8.36768 2.66663 7.99967 2.66663Z" fill="currentColor"/>
+                  </svg>
+      
+              </div>
+              <div class="font-size-sm text-secondary" style="font-family: Georgia;">8h 12m</div>
+          </div>
+          
+          
+
+          <div class="pt-2" style="width: 100%;">
+              <div class="row no-gutters">
+                  <div class="col text-start pt-2">
+                      {% if i.price == 0 %}
+                          <a id="myHref" class="btn btn-primary btn-lg fs-6 py-2" style="font-family: Georgia;" href="{{i.get_absolute_url}}">Enroll Now</a>
+                      {% else %}
+                          <a id="myHref" class="btn btn-primary btn-lg fs-6 py-2" style="font-family: Georgia;" href="{% url 'register' %}">Enroll Now</a>
+                      {% endif %}
+                  </div>
+                  
+                  <div class="col text-end">
+                      {% if i.price == 0 %}
+                          <div class="col-auto px-2 text-right position-relative">
+                              <ins class="position-absolute" style="top: 17px;right: 0;background-color: #071952;color:white;text-decoration: none;padding: 1px 12px;border-radius: 5px;font-family: Garamond;font-size: medium;">Free</ins>
+                          </div>
+                      {% else %}
+                          <div class="col-auto px-2 text-right">
+                              <del class="font-size-xs text-secondary" style="font-family: Garamond;">₹ {{i.price}}</del>
+                              <ins class="h5 mb-0 d-block mb-lg-n1 text-decoration-none" style="font-family: Garamond;">₹ {% discount_calculation i.price i.discount %}</ins>
+                          </div>
+                      {% endif %}
+                  </div>
+              </div>
+              
+          </div>
+
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

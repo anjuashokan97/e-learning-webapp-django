@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* .login-button{
+          font-size: 15px;
+          border-radius: 4px;
+          text-decoration: none;
+          transition: 0.3s;
+          margin-left: 25px;
+          padding: 6px 300px 8px 25px;
+          white-space: nowrap;
+          display: inline-block;
+          font-weight: 400;
+          font-family: cookie;
+          box-shadow: rgb(255, 255, 255) rgb(233, 223, 223) rgb(209, 205, 205)
+        } */
+
+       
+        
+
+       
+
+        .navbar-light .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+      
+
+        .navbar-toggler{
+          border: none;
+          font-size: 1.25rem;
+        }
+
+        .navbar-toggler:hover{
+          opacity: 0.8;
+        }
+
+        .navbar-toggler:focus{
+          box-shadow: none;
+          outline: none;
+        } 
+
+        .nav-item .nav-link{
+          font-weight: 600;
+          margin-right: 30px;
+          font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          position: relative;
+        }
+
+        .nav-itemz .nav-linkz{
+          font-weight: 600;
+          font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          text-decoration:none;
+        }
+
+
+        .collapse .nav-item .nav-link:hover{
+          opacity:0.8;
+          }
+
+        @media (min-width:991px)
+        {
+          .nav-link::before{
+          content: "";
+          position: absolute;
+          bottom: 0%;
+          transform: translateY(-10%);
+          width: 0;
+          height: 2px;
+          background-color: #fff;
+          visibility: hidden;
+          transition: 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::before{
+          width: 100%;
+          visibility: visible;
+        }
+      }
+
+        
+
+        
+
+        

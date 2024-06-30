@@ -1,0 +1,47 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+Trainer
+{% endblock %}
+
+{% block content %}
+<style>
+  .card{
+    box-shadow:2px 2px 5px 5px rgba(78, 78, 78, 0.281):
+    {% comment %} overflow:hidden; {% endcomment %}
+    transition: transform 0.6s ease;
+  }
+  .card:hover{
+    transform: translateY(-20px) 
+  }
+  .card-body .card-title{
+    font-family:Papyrus;
+    font-weight:700;
+  }
+  .card-body .card-text{
+    font-family:Monaco;
+  }
+  .card-body .card-pos b{
+    font-family:Copperplate;
+  }
+  .head center{
+    font-family:Garamond;
+    font-weight:900;
+    font-size:40px;
+  }
+</style>
+<h2 class="head"><center style="color:green; padding:115px 0 0px;">Available Trainer lists</center></h2>
+<hr>
+<div class="container text-center">
+  {% for t in trainer %}
+  <div class="card text-center mx-3 my-3" style="width: 18rem; display:inline-block;">
+  <img src="{{t.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{t.trainer_name}}</h5>
+    <h6 class="card-text">{{t.cou_name}}</h6>
+    <h5 class="card-pos"><b>{{t.position}}</b></h5>
+  </div>
+</div>
+  {% endfor %}
+</div>
+{% endblock %}

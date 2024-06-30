@@ -1,0 +1,322 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block content %}
+<style>
+    {% load static %}
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .contact{
+        position: relative;
+        min-height: 100vh;
+        padding: 10px 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background:rgba(0, 0, 0, 0.500 )url('/static/images/bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed; 
+        background-blend-mode: darken;
+    }
+    
+
+    .contact .content{
+        max-width: 900px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .contact .content h2{
+        font-size: 36px;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 0;
+        font-family: Lucida Handwriting;
+        padding:100px 0 0px;
+    }
+    .contact .content p{
+        font-weight: 300;
+        color: #fff;
+        font-family: "Lucida Console", "Courier New", monospace;
+    }
+    .container{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px 0 20px;
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    .container .contactInfo
+    {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container .contactInfo .box
+    {
+        position: relative;
+        padding: 10px 0;
+        display: flex; 
+    }
+    .container .contactInfo .box .icon{
+        min-width: 50px;
+        height: 50px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 21px;
+    }
+
+    .container .contactInfo .box .text{
+        display: flex;
+        margin-left: 20px;
+        font-size: 16px;
+        color: #fff;
+        flex-direction: column;
+        font-weight: 300;
+    }
+
+    .container .contactInfo .box .text h3{
+        font-family: times new roman;
+        font-size: 22px;
+        font-weight: 500;
+        color: #11cde6;
+        padding-bottom: 3px;
+    }
+    .container .contactInfo .box .text p{
+        font-family: times new roman;
+    }
+
+    .contactForm{
+        width: 50%;
+        padding: 40px 40px 10px;
+        background-color: #fff;
+    }
+
+
+    .contactForm h2{
+        font-size: 30px;
+        color: #000;
+        font-weight: 600;
+        font-family: Garamond;
+        text-align: center;
+    }
+    .contactForm .inputbox{
+        position: relative;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .contactForm .inputbox input,.contactForm .inputbox textarea{
+        width: 100%;
+        padding: 5px 0;
+        font-size: 15px;
+        margin: 10px 0;
+        border: none;
+        border-bottom: 2px solid #333;
+        outline: none;
+        resize: none;
+    }
+
+    .contactForm .inputbox span{
+        position: absolute;
+        left: 0;
+        padding: 5px 0;
+        font-size: 15px;
+        margin: 10px 0;
+        pointer-events: none;
+        transition: 0.5s;
+        color: #575656;
+        font-family: Georgia;
+    }
+
+    .contactForm .inputbox input:focus ~ span,
+    .contactForm .inputbox input:valid ~ span,
+    .contactForm .inputbox textarea:focus ~ span,
+    .contactForm .inputbox textarea:valid ~ span{
+        color: #cb1e58;
+        font-size: 12px;
+        transform: translateY(-20px);
+    }
+
+    .contactForm .inputbox input[type="submit"]
+    {
+        width: 100%;
+        background: #11cde6;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 18px;
+        font-family: Monaco;
+        border-radius: 10px 0 10px 0;
+    }
+
+    .contactForm .inputbox input[type="submit"]:hover, .contactForm .inputbox input[type="submit"]:focus{
+        background-color: #3EDBF0;
+    }
+    @media (max-width:992px)
+    {
+        .contact{
+            padding: 40px 25px;
+        }
+        
+        .container{
+            display: flex;
+            flex-direction: column;
+            background: none;
+            box-shadow: none;
+        }
+        .container .contactInfo{
+            margin-bottom: 40px;
+        }
+
+        .container .contactInfo,.contactForm{
+            width: 100%;
+        }
+    }
+
+    .confirm-button-class{
+        color: rgb(255, 255, 255) !important;
+        border: none !important;
+        outline: none !important;
+        padding: 10px 25px !important;
+        box-shadow: none !important;
+        }
+
+    .title-class {
+    font-size: 15px !important;
+    }
+
+    .swal-wide{
+        width: 32em;
+    }
+
+    
+</style>
+
+<section class="contact">
+    <div class="content">
+        <h2 class="">Contact Us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+    </div>
+    <div class="container">
+        <div class="contactInfo">
+            <div class="box">
+                <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="text">
+                    <h3>Address</h3>
+                    <p>Apt. 322 51314 Donny Shoals,<br>Goldnerburgh,<br>KY 04784-8074</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class="fa fa-phone"></i></div>
+                <div class="text">
+                    <h3>Phone</h3>
+                    <p>+1 (415) 555-0132</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class="far fa-envelope"></i></div>
+                <div class="text">
+                    <h3>Email</h3>
+                    <p>xewaneh593@wenkuu.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="contactForm">
+            <form action="{% url 'contact' %}" id="contact-form">
+                
+                <h2>Send Message</h2>
+                <div class="inputbox">
+                    <input type="text" name="from_name" id="" required>
+                    <span>Full Name</span>
+                </div>
+                <div class="inputbox">
+                    <input type="email" name="user_email" id="" required>
+                    <span>Email</span>
+                </div>
+                <div class="inputbox">
+                    <textarea required="required" rows="1" name="message"></textarea>
+                    <span>Type your Message..</span>
+                </div>
+                <div class="inputbox">
+                    <input type="submit" value="Send">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+    (function() {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init('zZ1ZotpmuR2T7QUs-');
+    })();
+</script>
+<script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_cd9smgr', 'template_amxnv5a', '#contact-form')
+            .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            Swal.fire({
+                icon: "success",
+                //title: "<strong>HTML <u>example</u></strong>",
+                confirmButtonColor: '#0d6efd',
+                confirmButtonText: 'OK',
+                customClass: 'swal-wide',
+                html: `
+                    <p style="color:black;font-size:18px">Thank you! Succesfully sent.</p>
+                `,
+                customClass: {
+                    confirmButton: 'confirm-button-class',
+                    title: 'title-class',
+                    icon: 'icon-class'
+                },        
+                });
+            document.getElementById("contact-form").reset();
+            }, function(error) {
+            console.log('FAILED...', error);
+            Swal.fire({
+                icon: "error",
+                title: "<strong>HTML <u>example</u></strong>",
+                confirmButtonColor: '#0d6efd',
+                confirmButtonText: 'OK',
+                customClass: 'swal-wide',
+                html: `
+                    You can use <b style="color:red;">bold text</b>,
+                    <a href="#">links</a>,
+                    and other HTML tags
+                `,
+                customClass: {
+                    confirmButton: 'confirm-button-class',
+                    title: 'title-class',
+                    icon: 'icon-class'
+                },        
+                });
+            document.getElementById("contact-form").reset();  
+            });
+        });
+        
+    }
+
+</script>
+{% endblock %}
