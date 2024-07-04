@@ -12,5 +12,6 @@ urlpatterns = [
     path('course/<slug:slug>', views.course_details, name='course_details'),
     path('err', views.error, name='404'),
     path('file', views.loginz, name='file'),
-    path('sign', views.signup, name='sign')
+    path('sign', views.signup, name='sign'),
+    path('enrollement', views.enrolled_courses, name='enrolled_courses')
 ]

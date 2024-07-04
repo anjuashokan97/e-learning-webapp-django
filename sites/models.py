@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.db.models.signals import pre_save
 # Create your models here.
-
+from django.contrib.auth.models import User
 
 STATE_CHOICE = (
     ('Andhra Pradesh', 'Andhra Pradesh'),
@@ -146,6 +146,13 @@ class Video(models.Model):
 
     def __str__(self):
         return f"{self.cou_name.cou_name}- {self.heading}"
+
+class Enrollment(models.Model):
+    cou_name = models.ForeignKey(Course, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    enrolled_on = models.DateField(auto_now=True)
+    def __str__(self):
+        return f"{self.user} joined {self.cou_name}"
 
 
 

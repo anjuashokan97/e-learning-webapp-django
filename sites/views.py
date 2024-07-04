@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Course, Booking, CourseBook, Video
-from .models import Trainer
+from .models import Course, Booking, CourseBook, Video,Enrollment,Trainer
 from .forms import RegisterForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -46,6 +45,13 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            # Get the course name from the form
+            course_name = form.cleaned_data.get('cou_name') 
+
+            # Create an Enrollment instance
+            enrollment = Enrollment(cou_name=course_name, user=request.user)
+            enrollment.save()
+
     form = RegisterForm()
     dict_form = {
         'form': form
@@ -106,3 +112,12 @@ def signup(request):
             return redirect('web')
             # return HttpResponse("<h1></h1>")
     return render(request, 'signup.html')
+
+
+def enrolled_courses(request):
+
+    courses = Enrollment.objects.filter(user=request.user)
+    context = {
+        'courses' : courses,
+    }
+    return render(request, 'enrollment.html', context)

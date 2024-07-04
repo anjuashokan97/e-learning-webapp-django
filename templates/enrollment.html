@@ -1,0 +1,26 @@
+{% extends 'Base.html' %}
+{% block content %}
+{% for course in courses %}
+
+<table class="table d-flex justify-content-center align-items-center h-100 flex-column">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Enrolled on</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Course Name</td>
+        <td>{{ course.cou_name }}</td>
+        <td>{{ course.enrolled_on }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endfor %}
+
+
+{% endblock %}
